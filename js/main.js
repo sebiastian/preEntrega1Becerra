@@ -16,15 +16,16 @@ if (user === userIngresado) {
         let costoCollar = (2 * medialuna + hebilla + regulador + correa * 0.7)
         let costoCorrea = (correa * 1.38 + mosqueton)
         let costoPretal = (correa * 1.84 + regulador + hebilla + medialuna)
-        let producto = +(prompt(`Que producto deseas comprar \n
+        
+        let producto = prompt(`Que producto deseas comprar \n
                      1- Collar\n
                      2- Correa\n
-                     3- Pretal`))
+                     3- Pretal`)
 
         let precioProductoElegido = +("")
         let precioUnidad = + ("")
 
-        if ((producto = 1) || (producto = 2) || (producto = 3)) {
+        if ((producto == "1") || (producto == 2) || (producto == "3" )) {
             switch (producto) {
                 case "1":
                     precioProductoElegido = costoCollar
