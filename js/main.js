@@ -1,3 +1,4 @@
+// Hacemos un login
 let user = "kilu"
 let password = "kilu123"
 let userIngresado = prompt("Ingrese su usuario")
@@ -7,6 +8,7 @@ if (user === userIngresado) {
     if (user === userIngresado && password === passIngresada) {
         console.log(`Bienvenida ${userIngresado}`)
 
+        //declaro productos y costos
         let correa = +(217.08)
         let medialuna = +(93.92)
         let hebilla = +(145.43)
@@ -30,25 +32,26 @@ if (user === userIngresado) {
                 case "1":
                     precioProductoElegido = costoCollar
                     precioUnidad = (+(costoCollar * 2.8)).toFixed(2)
-                    console.log(`El precio por unidad es ${precioUnidad}`)
+                    console.log(`El precio por unidad del collar es $${precioUnidad}`)
                     break
                 case "2":
                     precioProductoElegido = costoCorrea
                     precioUnidad = (+(costoCorrea * 2.8)).toFixed(2)
-                    console.log(precioUnidad)
+                    console.log(`El precio por unidad de la correa es $${precioUnidad}`)
                     break
                 case "3":
                     precioProductoElegido = costoPretal
                     precioUnidad = (+(costoPretal * 2.8)).toFixed(2)
-                    console.log(precioUnidad)
+                    console.log(`El precio por unidad del pretal es $${precioUnidad}`)
                     break
                 default:
-                    console.log(`ingrese una opcion correcta`)
+                    console.log(`Ingrese una opcion correcta`)
                     break
             }
 
             let cantidad = +(prompt(`Que cantidad deseas?`))
 
+            // con esta funcion veo si aplico precio minorista o mayorista, segun las cantidades
             function costoventa(x) {
                 if (cantidad < 10) {
                     costofinal = x * cantidad * 2.8
@@ -59,7 +62,7 @@ if (user === userIngresado) {
             }
             let costoventas = (costoventa(precioProductoElegido)).toFixed(2)
 
-            console.log(`El costo total es ${costoventas}`)
+            console.log(`El costo total de ${cantidad} articulo/s es $${costoventas}`)
 
         } else {
             console.log(`ingrese una opcion correcta`)
