@@ -108,3 +108,5 @@ function mostrarProducto(opcion) {
 
 }
 
+let prueba = productos.forEach(productos (producto) {console.log (producto.precio)} )
+
