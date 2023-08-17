@@ -1,4 +1,4 @@
-// Hacemos un login
+/* // Hacemos un login
 let user = "kilu"
 let password = "kilu123"
 let userIngresado = prompt("Ingrese su usuario")
@@ -72,4 +72,39 @@ if (user === userIngresado) {
     }
 } else {
     console.log("Usuario no registrado")
+} */
+
+let cinta = 217.08
+let medialuna = 93.92
+let hebilla = 145.43
+let regulador = 76.06
+let mosqueton = 432
+
+const productos = [
+    {
+        nombre: "correa",
+        precio: (cinta * 1.38 + mosqueton).toFixed(2)
+    },
+    {
+        nombre: "collar",
+        precio: (2 * medialuna + hebilla + regulador + cinta * 0.7).toFixed(2)
+    },
+    {
+        nombre: "pretal",
+        precio: (cinta * 1.84 + regulador + hebilla + medialuna).toFixed(2)
+    }
+]
+
+console.log(productos.nombre == "correa")
+
+let eleccion = prompt(`Que producto deseas comprar \n
+                     1- Collar\n
+                     2- Correa\n
+                     3- Pretal`)
+
+function mostrarProducto(opcion) {
+    if (opcion === 1) {
+    }
+
 }
+
