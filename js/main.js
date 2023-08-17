@@ -83,30 +83,45 @@ let mosqueton = 432
 const productos = [
     {
         nombre: "correa",
-        precio: (cinta * 1.38 + mosqueton).toFixed(2)
+        precio: (cinta * 1.38 + mosqueton).toFixed(2),
+        id: 1
     },
     {
         nombre: "collar",
-        precio: (2 * medialuna + hebilla + regulador + cinta * 0.7).toFixed(2)
+        precio: (2 * medialuna + hebilla + regulador + cinta * 0.7).toFixed(2),
+        id: 2
     },
     {
         nombre: "pretal",
-        precio: (cinta * 1.84 + regulador + hebilla + medialuna).toFixed(2)
+        precio: (cinta * 1.84 + regulador + hebilla + medialuna).toFixed(2),
+        id: 3
     }
 ]
 
-console.log(productos.nombre == "correa")
-
 let eleccion = prompt(`Que producto deseas comprar \n
-                     1- Collar\n
-                     2- Correa\n
+                     1- Correa\n
+                     2- Collar\n
                      3- Pretal`)
 
-function mostrarProducto(opcion) {
-    if (opcion === 1) {
-    }
+let precioProductoEncontrado = null;
+let nombreProductoBuscado
 
+productos.forEach(producto => {
+    if (producto.id == eleccion) {
+        precioProductoEncontrado = producto.precio;
+        nombreProductoBuscado = producto.nombre
+    }
+});
+
+if (precioProductoEncontrado !== null) {
+    alert(`El precio de ${nombreProductoBuscado} es: ${precioProductoEncontrado}`);
+} else {
+    console.log(`No se encontró el producto`);
 }
 
-let prueba = productos.forEach(productos (producto) {console.log (producto.precio)} )
+let consulta = confirm(`Quieres agregar al carrito?`)
 
+if (consulta === true){
+let carrito = productos.filter( producto => producto.nombre === nombreProductoBuscado)
+    console.log(carrito)
+} else ( alert(`Muchas gracias por su consulta`))
