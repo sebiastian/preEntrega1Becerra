@@ -82,21 +82,24 @@ let mosqueton = 432
 
 const productos = [
     {
-        nombre: "correa",
+        nombre: "Correa",
         precio: (cinta * 1.38 + mosqueton).toFixed(2),
         id: 1
     },
     {
-        nombre: "collar",
+        nombre: "Collar",
         precio: (2 * medialuna + hebilla + regulador + cinta * 0.7).toFixed(2),
         id: 2
     },
     {
-        nombre: "pretal",
+        nombre: "Pretal",
         precio: (cinta * 1.84 + regulador + hebilla + medialuna).toFixed(2),
         id: 3
     }
 ]
+
+let lista = productos.map ( producto => `${producto.nombre} ID-${producto.id} \n`)
+alert(lista.join(""))
 
 let eleccion = prompt(`Que producto deseas comprar \n
                      1- Correa\n
