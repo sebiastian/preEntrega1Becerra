@@ -1,107 +1,76 @@
-/* // Hacemos un login
-let user = "kilu"
-let password = "kilu123"
-let userIngresado = prompt("Ingrese su usuario")
-if (user === userIngresado) {
-    let passIngresada = prompt("Ingrese su contraseña")
-
-    if (user === userIngresado && password === passIngresada) {
-        console.log(`Bienvenida ${userIngresado}`)
-
-        //declaro productos y costos
-        let correa = +(217.08)
-        let medialuna = +(93.92)
-        let hebilla = +(145.43)
-        let regulador = +(76.06)
-        let mosqueton = +(432)
-
-        let costoCollar = (2 * medialuna + hebilla + regulador + correa * 0.7)
-        let costoCorrea = (correa * 1.38 + mosqueton)
-        let costoPretal = (correa * 1.84 + regulador + hebilla + medialuna)
-        
-        let producto = prompt(`Que producto deseas comprar \n
-                     1- Collar\n
-                     2- Correa\n
-                     3- Pretal`)
-
-        let precioProductoElegido = +("")
-        let precioUnidad = + ("")
-
-        if ((producto == "1") || (producto == 2) || (producto == "3" )) {
-            switch (producto) {
-                case "1":
-                    precioProductoElegido = costoCollar
-                    precioUnidad = (+(costoCollar * 2.8)).toFixed(2)
-                    console.log(`El precio por unidad del collar es $${precioUnidad}`)
-                    break
-                case "2":
-                    precioProductoElegido = costoCorrea
-                    precioUnidad = (+(costoCorrea * 2.8)).toFixed(2)
-                    console.log(`El precio por unidad de la correa es $${precioUnidad}`)
-                    break
-                case "3":
-                    precioProductoElegido = costoPretal
-                    precioUnidad = (+(costoPretal * 2.8)).toFixed(2)
-                    console.log(`El precio por unidad del pretal es $${precioUnidad}`)
-                    break
-                default:
-                    console.log(`Ingrese una opcion correcta`)
-                    break
-            }
-
-            let cantidad = +(prompt(`Que cantidad deseas?`))
-
-            // con esta funcion veo si aplico precio minorista o mayorista, segun las cantidades
-            function costoventa(x) {
-                if (cantidad < 10) {
-                    costofinal = x * cantidad * 2.8
-                } else {
-                    costofinal = x * cantidad * 2
-                }
-                return costofinal
-            }
-            let costoventas = (costoventa(precioProductoElegido)).toFixed(2)
-
-            console.log(`El costo total de ${cantidad} articulo/s es $${costoventas}`)
-
-        } else {
-            console.log(`ingrese una opcion correcta`)
-        }
-    } else {
-        console.log(`La contraseña ${passIngresada} es incorrecta`)
-    }
-} else {
-    console.log("Usuario no registrado")
-} */
-
 let cinta = 217.08
 let medialuna = 93.92
 let hebilla = 145.43
 let regulador = 76.06
 let mosqueton = 432
+let argolla = 162
+
+const carrito = []
 
 const productos = [
     {
         nombre: "Correa",
         precio: (cinta * 1.38 + mosqueton).toFixed(2),
-        id: 1
+        id: 1,
+        categoria: "perros"
     },
     {
         nombre: "Collar",
         precio: (2 * medialuna + hebilla + regulador + cinta * 0.7).toFixed(2),
-        id: 2
+        id: 2,
+        categoria: "perros"
     },
     {
         nombre: "Pretal",
         precio: (cinta * 1.84 + regulador + hebilla + medialuna).toFixed(2),
-        id: 3
+        id: 3,
+        categoria: "perros"
+    },
+    {
+        nombre: "Pretal Anti Escape",
+        precio: (cinta * 1.66 + argolla + regulador * 3 + hebilla),
+        id: 4,
+        categoria: "perros"
+    },
+    {
+        nombre: "Collar de Gato",
+        precio: (cinta * 0.31 + hebilla + regulador + medialuna ),
+        id: 5,
+        categoria: "gatos"
     }
 ]
 
+let inicio
 let lista = productos.map ( producto => `${producto.nombre} ID-${producto.id} \n`)
-alert(lista.join(""))
 
-let eleccion = prompt(`Que producto deseas comprar \n
+function comprar(id) {
+    let productoBuscado = productos.find (producto => producto.id === id)
+    let precioProducto = productoBuscado.precio
+    let agregarCarrito = confirm(`El precio del producto es $${precioProducto} \n Deseas agregarlo al carrito?`)
+    if (agregarCarrito === true){
+        carrito = carrito.push(productoBuscado)
+    }
+
+
+}
+
+do {
+    inicio = +(prompt(`Bienvenidos a Kilu Pet Shop \n \n
+1- Ver productos \n
+2- Comprar \n
+3- Ver carrito \n
+4- Ver por categorias \n
+5- Salir`))
+ if (inicio === 1){
+    alert(lista.join(""))
+ } else if (inicio ===2){
+   let eleccion = prompt(`Que producto deseas comprar \n ${lista}` )
+    comprar(eleccion)
+ }
+
+} while ( inicio != 5)
+
+/*let eleccion = prompt(`Que producto deseas comprar \n
                      1- Correa\n
                      2- Collar\n
                      3- Pretal`)
@@ -127,4 +96,4 @@ let consulta = confirm(`Quieres agregar al carrito?`)
 if (consulta === true){
 let carrito = productos.filter( producto => producto.nombre === nombreProductoBuscado)
     console.log(carrito)
-} else ( alert(`Muchas gracias por su consulta`))
+} else ( alert(`Muchas gracias por su consulta`)) */
