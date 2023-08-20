@@ -12,88 +12,84 @@ const productos = [
         nombre: "Correa",
         precio: (cinta * 1.38 + mosqueton).toFixed(2),
         id: 1,
-        categoria: "perros"
+        categoria: "perros",
+        stock: 20
     },
     {
         nombre: "Collar",
         precio: (2 * medialuna + hebilla + regulador + cinta * 0.7).toFixed(2),
         id: 2,
-        categoria: "perros"
+        categoria: "perros",
+        stock: 20
     },
     {
         nombre: "Pretal",
         precio: (cinta * 1.84 + regulador + hebilla + medialuna).toFixed(2),
         id: 3,
-        categoria: "perros"
+        categoria: "perros",
+        stock: 20
     },
     {
         nombre: "Pretal Anti Escape",
-        precio: (cinta * 1.66 + argolla + regulador * 3 + hebilla),
+        precio: (cinta * 1.66 + argolla + regulador * 3 + hebilla).toFixed(2),
         id: 4,
         categoria: "perros"
     },
     {
         nombre: "Collar de Gato",
-        precio: (cinta * 0.31 + hebilla + regulador + medialuna ),
+        precio: (cinta * 0.31 + hebilla + regulador + medialuna).toFixed(2),
         id: 5,
-        categoria: "gatos"
+        categoria: "gatos",
+        stock: 20
     }
 ]
 
 let inicio
-let lista = productos.map ( producto => `${producto.nombre} ID-${producto.id} \n`)
+let lista = productos.map(producto => `${producto.nombre} ID-${producto.id} \n`)
 
 function comprar(id) {
-    let productoBuscado = productos.find (producto => producto.id === id)
+    let productoBuscado = productos.find(producto => producto.id === id)
     let precioProducto = productoBuscado.precio
     let agregarCarrito = confirm(`El precio del producto es $${precioProducto} \n Deseas agregarlo al carrito?`)
-    if (agregarCarrito === true){
-        carrito = carrito.push(productoBuscado)
+    if (agregarCarrito === true) {
+        let cantidadProductos = +(prompt(`Que cantidad deseas comprar?`))
+        if (cantidadProductos <= productoBuscado.stock) {
+            for (let i = 0; i < cantidadProductos; i++) {
+                (carrito.push(productoBuscado))
+                --productoBuscado.stock
+            }
+        } else {
+            alert(`No tenemos stock \n Nuestro stock de este producto es ${productoBuscado.stock}`)
+        }
     }
-
-
 }
+
+
 
 do {
     inicio = +(prompt(`Bienvenidos a Kilu Pet Shop \n \n
 1- Ver productos \n
 2- Comprar \n
 3- Ver carrito \n
-4- Ver por categorias \n
-5- Salir`))
- if (inicio === 1){
-    alert(lista.join(""))
- } else if (inicio ===2){
-   let eleccion = prompt(`Que producto deseas comprar \n ${lista}` )
-    comprar(eleccion)
- }
-
-} while ( inicio != 5)
-
-/*let eleccion = prompt(`Que producto deseas comprar \n
-                     1- Correa\n
-                     2- Collar\n
-                     3- Pretal`)
-
-let precioProductoEncontrado = null;
-let nombreProductoBuscado
-
-productos.forEach(producto => {
-    if (producto.id == eleccion) {
-        precioProductoEncontrado = producto.precio;
-        nombreProductoBuscado = producto.nombre
+4- Salir`))
+    if (inicio === 1) {
+        alert(lista.join(""))
+    } else if (inicio === 2) {
+        let eleccion = prompt(`Qué producto deseas comprar \n ${lista}`);
+        let idEleccion = parseInt(eleccion);
+        comprar(idEleccion);
+    } else if (inicio === 3) {
+        let resumenCompra = carrito.map(producto => `${producto.nombre} $${producto.precio}`).join("\n")
+        alert(resumenCompra)
     }
-});
-
-if (precioProductoEncontrado !== null) {
-    alert(`El precio de ${nombreProductoBuscado} es: ${precioProductoEncontrado}`);
-} else {
-    console.log(`No se encontró el producto`);
+} while (inicio != 4) {
+    if (carrito.length < 10) {
+        let totalCompra = carrito.reduce((acumulador, producto) => acumulador + parseFloat(producto.precio), 0).toFixed(2);
+        alert(`Gracias por su compra. El total de su compra es $${totalCompra}`);
+    } else {
+        let totalSinDescuento = carrito.reduce((acumulador, producto) => acumulador + parseFloat(producto.precio), 0)
+        let totalConDescuento = (totalSinDescuento * 0.9).toFixed(2)
+        alert(`Gracias por su compra. El total de su compra es $${totalConDescuento} y ha obtenido un descuento del 10% por la compra de más de 10 artículos`)
+    }
 }
 
-let consulta = confirm(`Quieres agregar al carrito?`)
-
-if (consulta === true){
-let carrito = productos.filter( producto => producto.nombre === nombreProductoBuscado)
-    console.log(carrito)
-} else ( alert(`Muchas gracias por su consulta`)) */
