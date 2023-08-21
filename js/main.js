@@ -75,14 +75,14 @@ do {
     if (inicio === 1) {
         alert(lista.join(""))
     } else if (inicio === 2) {
-        let eleccion = prompt(`Qué producto deseas comprar \n ${lista}`);
+        let eleccion = prompt(`Qué producto deseas comprar \n${lista.join("")}`);
         let idEleccion = parseInt(eleccion);
         comprar(idEleccion);
     } else if (inicio === 3) {
         let resumenCompra = carrito.map(producto => `${producto.nombre} $${producto.precio}`).join("\n")
         alert(resumenCompra)
     }
-} while (inicio != 4) {
+} while (inicio !== 4) {
     if (carrito.length < 10) {
         let totalCompra = carrito.reduce((acumulador, producto) => acumulador + parseFloat(producto.precio), 0).toFixed(2);
         alert(`Gracias por su compra. El total de su compra es $${totalCompra}`);
