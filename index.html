@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./js/main.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
+
 <body>
-    <h1>Soy Un Programa</h1>
-    
+    <div class="titulo">
+        <h1>Kilu Pet Shop</h1>
+    </div>
+    <aside>
+        <div>
+            <ul>
+                <li><button>Todos los articulos</button></li>
+                <li><button>Perros</button></li>
+                <li><button>Gatos</button></li>
+            </ul>
+            
+        </div>
+    </aside>
+    <main>
+        <h2>Todos los productos</h2>
+        <div>
+            <div id="productos">
+                <img id="producto-imagen" src="/Image/pretal01.jpg">
+                <h3 id="producto-titulo">Pretal</h3>
+                <h3 id="producto-precio">1200$</h3>
+                <button id="producto-agregar">Agregar al Carrito</button>
+            </div>
+        </div>
+        <a>
+            <i class="bi bi-cart-check-fill"></i>
+            <span>0</span>
+        </a>
+    </main>
+
 </body>
+
 </html>

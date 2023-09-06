@@ -1,3 +1,4 @@
+/*
 let cinta = 217.08
 let medialuna = 93.92
 let hebilla = 145.43
@@ -75,21 +76,21 @@ do {
     if (inicio === 1) {
         alert(lista.join(""))
     } else if (inicio === 2) {
-        let eleccion = prompt(`Qué producto deseas comprar \n${lista.join("")}`);
-        let idEleccion = parseInt(eleccion);
-        comprar(idEleccion);
+        let eleccion = prompt(`Qué producto deseas comprar \n${lista.join("")}`)
+        let idEleccion = parseInt(eleccion)
+        comprar(idEleccion)
     } else if (inicio === 3) {
         let resumenCompra = carrito.map(producto => `${producto.nombre} $${producto.precio}`).join("\n")
         alert(resumenCompra)
     }
 } while (inicio !== 4) {
     if (carrito.length < 10) {
-        let totalCompra = carrito.reduce((acumulador, producto) => acumulador + parseFloat(producto.precio), 0).toFixed(2);
-        alert(`Gracias por su compra. El total de su compra es $${totalCompra}`);
+        let totalCompra = carrito.reduce((acumulador, producto) => acumulador + parseFloat(producto.precio), 0).toFixed(2)
+        alert(`Gracias por su compra. El total de su compra es $${totalCompra}`)
     } else {
         let totalSinDescuento = carrito.reduce((acumulador, producto) => acumulador + parseFloat(producto.precio), 0)
         let totalConDescuento = (totalSinDescuento * 0.9).toFixed(2)
         alert(`Gracias por su compra. El total de su compra es $${totalConDescuento} y ha obtenido un descuento del 10% por la compra de más de 10 artículos`)
     }
 }
-
+*/
