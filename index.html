@@ -4,42 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="./js/main.js"></script>
+    <title>Kilu Pet Shop</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 
 <body>
-    <div class="titulo">
+    <header>
         <h1>Kilu Pet Shop</h1>
-    </div>
-    <aside>
-        <div>
-            <ul>
-                <li><button>Todos los articulos</button></li>
-                <li><button>Perros</button></li>
-                <li><button>Gatos</button></li>
-            </ul>
-            
-        </div>
-    </aside>
+    </header>
+
+    <nav>
+        <ul>
+            <li><button id="productosTodos">Todos los artículos</button></li>
+            <li><button id="productosPerros">Perros</button></li>
+            <li><button id="productosGatos">Gatos</button></li>
+            <li><button id="productosCarrito">Carrito</button></li>
+            <a href="#">
+                <i class="bi bi-cart-check-fill"></i>
+                <span>0</span>
+            </a>
+        </ul>
+    </nav>
+
     <main>
-        <h2>Todos los productos</h2>
-        <div>
-            <div id="productos">
-                <img id="producto-imagen" src="/Image/pretal01.jpg">
-                <h3 id="producto-titulo">Pretal</h3>
-                <h3 id="producto-precio">1200$</h3>
-                <button id="producto-agregar">Agregar al Carrito</button>
+        <section class="main_section">
+            <h2 id="categoriaProductos">Todos los productos</h2>
+            <div class="productos" id="containerProductos">
+                <!-- Productos -->
             </div>
-        </div>
-        <a>
-            <i class="bi bi-cart-check-fill"></i>
-            <span>0</span>
-        </a>
+        </section>
+
     </main>
 
+    <footer>
+        <script src="./js/main.js"></script>
+    </footer>
 </body>
 
 </html>

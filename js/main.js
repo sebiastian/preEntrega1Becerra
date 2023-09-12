@@ -94,3 +94,101 @@ do {
     }
 }
 */
+
+function principal() {
+    let cinta = 217.08
+    let medialuna = 93.92
+    let hebilla = 145.43
+    let regulador = 76.06
+    let mosqueton = 432
+    let argolla = 162
+
+    const productos = [
+        {
+            nombre: "Correa",
+            precio: (cinta * 1.38 + mosqueton).toFixed(2),
+            id: 1,
+            categoria: "perros",
+            stock: 20
+        },
+        {
+            nombre: "Collar",
+            precio: (2 * medialuna + hebilla + regulador + cinta * 0.7).toFixed(2),
+            id: 2,
+            categoria: "perros",
+            stock: 20
+        },
+        {
+            nombre: "Pretal",
+            precio: (cinta * 1.84 + regulador + hebilla + medialuna).toFixed(2),
+            id: 3,
+            categoria: "perros",
+            stock: 20
+        },
+        {
+            nombre: "Pretal Anti Escape",
+            precio: (cinta * 1.66 + argolla + regulador * 3 + hebilla).toFixed(2),
+            id: 4,
+            categoria: "perros"
+        },
+        {
+            nombre: "Collar de Gato",
+            precio: (cinta * 0.31 + hebilla + regulador + medialuna).toFixed(2),
+            id: 5,
+            categoria: "gatos",
+            stock: 20
+        }
+    ];
+
+    mostrarProductos(productos);
+
+    function mostrarProductos(productos) {
+        let contenedor = document.getElementById("containerProductos")
+        contenedor.innerHTML = ''
+        productos.forEach(producto => {
+            let tarjetaProducto = document.createElement("div")
+            tarjetaProducto.innerHTML = `
+                <div>
+                    <img src="/Image/pretal01.jpg">
+                    <div class="caracteristicasProducto">
+                        <h3>${producto.nombre}</h3>
+                        <h3>${producto.precio}</h3>
+                    </div>
+                    <button class="botonAgregarCarrito" id="${producto.id}">Agregar al Carrito</button>
+                </div>
+            `;
+            contenedor.appendChild(tarjetaProducto)
+
+            const botonAgregarCarrito = tarjetaProducto.querySelector(".botonAgregarCarrito");
+            botonAgregarCarrito.addEventListener("click", comprar);
+        });
+    }
+
+    function mostrarCategoria(mostrarCategoria) {
+        const categoriaNueva = productos.filter(producto => producto.categoria === mostrarCategoria)
+        mostrarProductos(categoriaNueva)
+    }
+
+    const productosTodos = document.getElementById("productosTodos")
+    productosTodos.addEventListener("click", () => mostrarProductos(productos))
+    const productosPerros = document.getElementById("productosPerros")
+    productosPerros.addEventListener("click", () => mostrarCategoria("perros"))
+    const productosGatos = document.getElementById("productosGatos")
+    productosGatos.addEventListener("click", () => mostrarCategoria("gatos"))
+    const productosCarrito = document.getElementById("productosCarrito")
+    productosCarrito.addEventListener("click", () => mostrarProductos(carrito))
+
+    const carrito = []
+
+    function comprar() {
+        const boton = event.target;
+        const id = boton.getAttribute("id")
+        const producto = productos.find(item => item.id === +(id))
+        carrito.push(producto)
+        console.log(carrito)
+    }
+    mostrarProductos(productos)
+}
+
+
+principal();

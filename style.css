@@ -1,45 +1,207 @@
+/*
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter&display=swap');
+
+:root {
+    --color-fuerte-primario: #016A70;
+    --color-claro-primario: #FFFFDD;
+    --color-fuerte-secundario: #D2DE32;
+    --color-claro-secundario: #A2C579;
+}
+
 
 * {
     margin: 0;
     padding: 0;
     font-family: 'Bebas Neue', sans-serif;
+    background-color: var(--color-claro-primario)
 }
-body {
-    background-color: rgba(127, 255, 212); 
-    display: flex;
-    background-image: url('/Image/patitas.png');
-    background-repeat: repeat ;
-    background-size: 30px 30px;
-  }
 
-aside {
-    width: 100px;
+body {
+
+
+    & h1 {
+        text-align: center;
+        color: var(--color-fuerte-primario);
+    }
 }
+
 
 main {
-    width: (100%-100px);
-}
-.titulo {
     display: flex;
-    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: var(--color-fuerte-primario);
+    & aside {
+        width: 30%;
+        margin-top: 2rem;
+        text-align: center;
+        & ul {
+            list-style-type: none;
+            & li button {
+                background-color: transparent;
+                border: 0;
+                border-radius: 0;
+                font-size: 1.3rem;
+                text-align: center;
+                color: var(--color-fuerte-primario);
+            }
+        }
+    }
+
+
+    & div {
+        margin: 0;
+        width: 70%;
+        justify-content: center;
+
+        & .productos {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        & div div {
+            border: solid 2px var(--color-fuerte-primario);
+            border-radius: 10px;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+
+            & div img {
+                border-radius: 100px;
+                margin: 10px;
+            }
+
+            & div div{
+                margin: 10px 0;
+                width: 100%;
+                display:flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items: center;
+
+            }
+
+            & div button {
+                border:0;
+                padding: 2px;
+                margin: 2px;
+            }
+        }
+        & h2 {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        & a {
+            position: fixed;
+            top: 50%;
+            right: 5%;
+            text-decoration: none;
+
+            & ul {
+                list-style-type: none;
+            }
+        }
+    }
 }
-h1 {
-    text-align: center;
-    margin: 30px 0;
-}
-ul {
-    list-style-type: none;
-}
-a {
-    text-decoration: none;
+*/
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter&display=swap');
+
+:root {
+    --color-fuerte-primario: #016A70;
+    --color-claro-primario: #FFFFDD;
+    --color-fuerte-secundario: #D2DE32;
+    --color-claro-secundario: #A2C579;
 }
 
-#productos {
-    width: 150px;
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    background-color: var(--color-claro-primario);
+}
+
+/* Estilos para el encabezado */
+body header h1 {
+    text-align: center;
+    color: var(--color-fuerte-primario);
+}
+
+/* Estilos para la sección principal */
+main {
     display: flex;
-    flex-direction: column;
-    & img {
-        border-radius: 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: var(--color-fuerte-primario);
+}
+
+/* Estilos para la barra lateral */
+nav {
+    margin-top: 2rem;
+    text-align: center;
+
+    & ul {
+        display: flex;
+        justify-content: space-evenly;
+        list-style-type: none;
+
+        & li button {
+            background-color: transparent;
+            border: 0;
+            border-radius: 0;
+            font-size: 1.3rem;
+            text-align: center;
+            color: var(--color-fuerte-primario);
+            cursor: pointer;
+        }
+    }
+}
+
+/* Estilos para la sección de productos */
+
+.main_section {
+
+    & h2 {
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+    }
+
+    & .productos {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+
+        & div {
+            border: solid 2px var(--color-fuerte-primario);
+            border-radius: 10px;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+
+            & img {
+                border-radius: 100px;
+                margin: 10px;
+            }
+
+            & .caracteristicasProducto {
+                border: 0;
+                text-align: center;
+            }
+
+            & .botonAgregarCarrito {
+                border: 0;
+                padding: 5px;
+                cursor: pointer;
+                background-color: aqua;
+            }
+        }
+
     }
 }
