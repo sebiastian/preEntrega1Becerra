@@ -95,7 +95,16 @@ do {
 }
 */
 
+let carrito = []
+
 function principal() {
+    
+    const carritoGuardado = localStorage.getItem("carrito");
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado);
+    } else {
+        carrito = []
+    }
     let cinta = 217.08
     let medialuna = 93.92
     let hebilla = 145.43
@@ -178,7 +187,7 @@ function principal() {
     const productosCarrito = document.getElementById("productosCarrito")
     productosCarrito.addEventListener("click", () => mostrarProductos(carrito))
 
-    const carrito = []
+
 
     function comprar() {
         const boton = event.target;
@@ -186,6 +195,8 @@ function principal() {
         const producto = productos.find(item => item.id === +(id))
         carrito.push(producto)
         console.log(carrito)
+
+        localStorage.setItem("carrito", JSON.stringify(carrito))
     }
     mostrarProductos(productos)
 }
