@@ -96,12 +96,13 @@ do {
 */
 
 let carrito = []
+let contenedor = document.getElementById("containerProductos")
 
 function principal() {
     
-    const carritoGuardado = localStorage.getItem("carrito");
+    const carritoGuardado = localStorage.getItem("carrito")
     if (carritoGuardado) {
-        carrito = JSON.parse(carritoGuardado);
+        carrito = JSON.parse(carritoGuardado)
     } else {
         carrito = []
     }
@@ -149,11 +150,11 @@ function principal() {
         }
     ];
 
-    mostrarProductos(productos);
+    mostrarProductos(productos)
 
     function mostrarProductos(productos) {
-        let contenedor = document.getElementById("containerProductos")
         contenedor.innerHTML = ''
+        contenedor.className ="productos"
         productos.forEach(producto => {
             let tarjetaProducto = document.createElement("div")
             tarjetaProducto.innerHTML = `
@@ -164,12 +165,30 @@ function principal() {
                         <h3>${producto.precio}</h3>
                     </div>
                     <button class="botonAgregarCarrito" id="${producto.id}">Agregar al Carrito</button>
-                </div>
-            `;
+                </div>`
             contenedor.appendChild(tarjetaProducto)
 
             const botonAgregarCarrito = tarjetaProducto.querySelector(".botonAgregarCarrito");
-            botonAgregarCarrito.addEventListener("click", comprar);
+            botonAgregarCarrito.addEventListener("click", comprar)
+        });
+    }
+
+    function mostrarCarrito(productos) {
+        contenedor.innerHTML = ''
+        contenedor.className ="productosCarrito"
+        productos.forEach(producto => {
+            let tarjetaProducto = document.createElement("div")
+            tarjetaProducto.className = "carrito"
+            tarjetaProducto.innerHTML = `
+                    <img src="/Image/pretal01.jpg">
+                    <div class="caracteristicasProducto">
+                        <h3>${producto.nombre}</h3>
+                        <h3>${producto.precio}</h3>
+                    </div>
+                    <h3>Unidades</h3>
+                    <h3>Subtotal</h3>
+                    `
+            contenedor.appendChild(tarjetaProducto)
         });
     }
 
@@ -185,12 +204,13 @@ function principal() {
     const productosGatos = document.getElementById("productosGatos")
     productosGatos.addEventListener("click", () => mostrarCategoria("gatos"))
     const productosCarrito = document.getElementById("productosCarrito")
-    productosCarrito.addEventListener("click", () => mostrarProductos(carrito))
+    productosCarrito.addEventListener("click", () => mostrarCarrito(carrito))
+    
 
 
 
     function comprar() {
-        const boton = event.target;
+        const boton = event.target
         const id = boton.getAttribute("id")
         const producto = productos.find(item => item.id === +(id))
         carrito.push(producto)
@@ -202,4 +222,4 @@ function principal() {
 }
 
 
-principal();
+principal()
