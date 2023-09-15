@@ -213,8 +213,11 @@ main {
 .productosCarrito {
 
     & .carrito {
-        display: flex;
-        justify-content: space-around;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 4fr auto;
+        justify-items: center;
+        align-items: center;
         width: 100%;
         height: 4rem;
 
@@ -224,7 +227,21 @@ main {
 
         & img{
             border-radius: 100%;
+            width: 40px;
 
         }
     }
+}
+
+.menuOcultoCompra {
+    display: none;
+}
+
+.menuVisibleCompra{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 3rem;
+    margin-top: 2rem;
 }
