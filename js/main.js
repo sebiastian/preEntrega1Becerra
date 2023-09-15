@@ -1,17 +1,19 @@
 let carrito = []
 let contenedor = document.getElementById("containerProductos")
 const mostrarFinalizarCompra = document.getElementById("menuFinalizarCompra")
-let h3total = document.getElementById("h3total")
-let total
+let h3total = document.getElementById("h3.total")
+
+
 
 function principal() {
-    
+
     const carritoGuardado = localStorage.getItem("carrito")
     if (carritoGuardado) {
         carrito = JSON.parse(carritoGuardado)
     } else {
         carrito = []
     }
+
     let cinta = 217.08
     let medialuna = 93.92
     let hebilla = 145.43
@@ -56,11 +58,9 @@ function principal() {
         }
     ];
 
-    mostrarProductos(productos)
-
     function mostrarProductos(productos) {
         contenedor.innerHTML = ''
-        contenedor.className ="productos"
+        contenedor.className = "productos"
         productos.forEach(producto => {
             let tarjetaProducto = document.createElement("div")
             tarjetaProducto.innerHTML = `
@@ -80,7 +80,7 @@ function principal() {
 
     function mostrarCarrito(productos) {
         contenedor.innerHTML = ''
-        contenedor.className ="productosCarrito"
+        contenedor.className = "productosCarrito"
         productos.forEach(producto => {
             let tarjetaProducto = document.createElement("div")
             tarjetaProducto.className = "carrito"
@@ -99,16 +99,11 @@ function principal() {
                     <h3>$${producto.cantidad * producto.precio}</h3>
                     </div>
                     `
-                    
-                    producto.subtotal = +(producto.precio) * producto.cantidad
-                    
-                    total = carrito.reduce((accumulator, item) => accumulator + +(item.subtotal), 0)
+
             contenedor.appendChild(tarjetaProducto)
+            if (productos) {
 
-
-            if (productos){
-                
-                mostrarFinalizarCompra.className = "menuVisibleCompra"
+            mostrarFinalizarCompra.className = "menuVisibleCompra"
             }
         })
     }
@@ -119,7 +114,28 @@ function principal() {
         mostrarFinalizarCompra.className = "menuOcultoCompra"
     }
 
-    
+    function comprar() {
+        const boton = event.target
+        const id = boton.getAttribute("id")
+        const producto = productos.find(item => item.id === +(id))
+        const productoEnCarrito = carrito.find(item => item.id === +(id))
+        if (productoEnCarrito) {
+            producto.cantidad++
+        } else {
+            producto.cantidad = 1
+            carrito.push(producto)
+        }
+        producto.subtotal = 1
+        producto.subtotal = +(producto.precio) * producto.cantidad
+        console.log(carrito)
+        let total = carrito.reduce((accumulator, carrito) => accumulator + carrito.subtotal, 0)
+        console.log(total)
+        h3total.innerText = +(total)
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
+
+    mostrarProductos(productos)
+
     const productosTodos = document.getElementById("productosTodos")
     productosTodos.addEventListener("click", () => mostrarProductos(productos))
     const productosPerros = document.getElementById("productosPerros")
@@ -128,35 +144,6 @@ function principal() {
     productosGatos.addEventListener("click", () => mostrarCategoria("gatos"))
     const productosCarrito = document.getElementById("productosCarrito")
     productosCarrito.addEventListener("click", () => mostrarCarrito(carrito))
-    
-
-
-
-    function comprar() {
-        const boton = event.target
-        const id = boton.getAttribute("id")
-        const producto = productos.find(item => item.id === +(id))
-    
-        const productoEnCarrito = carrito.find(item => item.id === +(id))
-    
-        if (productoEnCarrito) {
-            productoEnCarrito.cantidad++
-        } else {
-
-            producto.cantidad = 1
-            carrito.push(producto)
-        }
-    
-        console.log(carrito)
-
-        h3total.innerText = "total"
-    
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-    }
-    
-    mostrarProductos(productos)
-
-    
 }
 
 

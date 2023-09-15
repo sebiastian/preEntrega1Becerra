@@ -165,8 +165,9 @@ nav {
 main {
     justify-content: center;
 }
+
 .main_section {
-    
+
     width: 80%;
 
     & h2 {
@@ -225,10 +226,9 @@ main {
             text-align: center;
         }
 
-        & img{
+        & img {
             border-radius: 100%;
             width: 40px;
-
         }
     }
 }
@@ -237,7 +237,7 @@ main {
     display: none;
 }
 
-.menuVisibleCompra{
+.menuVisibleCompra {
     display: flex;
     align-items: center;
     justify-content: center;
