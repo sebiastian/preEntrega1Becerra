@@ -27,34 +27,71 @@ function principal() {
             precio: (cinta * 1.38 + mosqueton).toFixed(2),
             id: 1,
             categoria: "perros",
-            stock: 20
+            stock: 20,
+            imagen:"/Image/correa.jpeg"
         },
         {
             nombre: "Collar",
             precio: (2 * medialuna + hebilla + regulador + cinta * 0.7).toFixed(2),
             id: 2,
             categoria: "perros",
-            stock: 20
+            stock: 20,
+            imagen:"/Image/collar.jpg"
         },
         {
             nombre: "Pretal",
             precio: (cinta * 1.84 + regulador + hebilla + medialuna).toFixed(2),
             id: 3,
             categoria: "perros",
-            stock: 20
+            stock: 20,
+            imagen:"/Image/pretal01.jpg"
         },
         {
             nombre: "Pretal Anti Escape",
             precio: (cinta * 1.66 + argolla + regulador * 3 + hebilla).toFixed(2),
             id: 4,
-            categoria: "perros"
+            categoria: "perros",
+            imagen:"/Image/pretalAntiEscape.jpg"
         },
         {
             nombre: "Collar de Gato",
             precio: (cinta * 0.31 + hebilla + regulador + medialuna).toFixed(2),
             id: 5,
             categoria: "gatos",
-            stock: 20
+            stock: 20,
+            imagen:"/Image/collarGato.jpg"
+        },
+        {
+            nombre: "Mordedor",
+            precio: (800).toFixed(2),
+            id: 6,
+            categoria: "perros",
+            stock: 20,
+            imagen:"/Image/mordedores.jpg"
+        },
+        {
+            nombre: "Bolitas con Plumas",
+            precio: (350).toFixed(2),
+            id: 7,
+            categoria: "gatos",
+            stock: 20,
+            imagen:"/Image/bolitasConPlumas.jpg"
+        },
+        {
+            nombre: "Abrigo de Perros",
+            precio: (1500).toFixed(2),
+            id: 8,
+            categoria: "perros",
+            stock: 20,
+            imagen:"/Image/abrigosPerros.jpeg"
+        },
+        {
+            nombre: "Medallita para Gatos",
+            precio: (240).toFixed(2),
+            id: 9,
+            categoria: "gatos",
+            stock: 20,
+            imagen:"/Image/medallitaGatos.jpeg"
         }
     ];
 
@@ -64,7 +101,7 @@ function principal() {
         productos.forEach(producto => {
             let tarjetaProducto = document.createElement("div")
             tarjetaProducto.innerHTML = `
-                    <img src="/Image/pretal01.jpg">
+                    <img src="${producto.imagen}">
                     <div class="caracteristicasProducto">
                         <h3>${producto.nombre}</h3>
                         <h3>${producto.precio}</h3>
@@ -85,7 +122,7 @@ function principal() {
             let tarjetaProducto = document.createElement("div")
             tarjetaProducto.className = "carrito"
             tarjetaProducto.innerHTML = `
-                    <img src="/Image/pretal01.jpg">
+                    <img src="${producto.imagen}">
                     <div class="caracteristicasProducto">
                         <h3>${producto.nombre}</h3>
                         <h3>${producto.precio}</h3>

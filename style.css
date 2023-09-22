@@ -1,116 +1,6 @@
-/*
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter&display=swap');
 
-:root {
-    --color-fuerte-primario: #016A70;
-    --color-claro-primario: #FFFFDD;
-    --color-fuerte-secundario: #D2DE32;
-    --color-claro-secundario: #A2C579;
-}
-
-
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Bebas Neue', sans-serif;
-    background-color: var(--color-claro-primario)
-}
-
-body {
-
-
-    & h1 {
-        text-align: center;
-        color: var(--color-fuerte-primario);
-    }
-}
-
-
-main {
-    display: flex;
-    max-width: 1100px;
-    margin: 0 auto;
-    color: var(--color-fuerte-primario);
-    & aside {
-        width: 30%;
-        margin-top: 2rem;
-        text-align: center;
-        & ul {
-            list-style-type: none;
-            & li button {
-                background-color: transparent;
-                border: 0;
-                border-radius: 0;
-                font-size: 1.3rem;
-                text-align: center;
-                color: var(--color-fuerte-primario);
-            }
-        }
-    }
-
-
-    & div {
-        margin: 0;
-        width: 70%;
-        justify-content: center;
-
-        & .productos {
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        & div div {
-            border: solid 2px var(--color-fuerte-primario);
-            border-radius: 10px;
-            width: 200px;
-            display: flex;
-            flex-direction: column;
-
-            & div img {
-                border-radius: 100px;
-                margin: 10px;
-            }
-
-            & div div{
-                margin: 10px 0;
-                width: 100%;
-                display:flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                align-items: center;
-
-            }
-
-            & div button {
-                border:0;
-                padding: 2px;
-                margin: 2px;
-            }
-        }
-        & h2 {
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        & a {
-            position: fixed;
-            top: 50%;
-            right: 5%;
-            text-decoration: none;
-
-            & ul {
-                list-style-type: none;
-            }
-        }
-    }
-}
-*/
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter&display=swap');
-
-:root {
+:root{
     --color-fuerte-primario: #016A70;
     --color-claro-primario: #FFFFDD;
     --color-fuerte-secundario: #D2DE32;
@@ -122,13 +12,16 @@ main {
     margin: 0;
     padding: 0;
     font-family: 'Bebas Neue', sans-serif;
-    background-color: var(--color-claro-primario);
 }
 
 /* Estilos para el encabezado */
-body header h1 {
+body header  {
+    background-color: var(--color-claro-secundario);
+    color: var(--color-fuerte-secundario);
+    & h1 {
     text-align: center;
-    color: var(--color-fuerte-primario);
+    font-size: 3rem;
+    color: var(--color-fuerte-primario);}
 }
 
 /* Estilos para la sección principal */
@@ -137,12 +30,14 @@ main {
     max-width: 1100px;
     margin: 0 auto;
     color: var(--color-fuerte-primario);
+    background-color: whitesmoke;
 }
 
 /* Estilos para la barra lateral */
 nav {
-    margin-top: 2rem;
     text-align: center;
+    background-color: whitesmoke;
+    padding: 20px;
 
     & ul {
         display: flex;
@@ -167,7 +62,7 @@ main {
 }
 
 .main_section {
-
+    padding: 20px;
     width: 80%;
 
     & h2 {
@@ -184,19 +79,17 @@ main {
         justify-content: center;
 
         & div {
-            border: solid 2px var(--color-fuerte-primario);
-            border-radius: 10px;
             width: 200px;
             display: flex;
             flex-direction: column;
 
             & img {
-                border-radius: 100px;
-                margin: 10px;
+                margin: 4px;
+                border:  solid 2px var(--color-fuerte-primario);
+                border-radius: 10px;
             }
 
             & .caracteristicasProducto {
-                border: 0;
                 text-align: center;
             }
 
@@ -204,7 +97,8 @@ main {
                 border: 0;
                 padding: 5px;
                 cursor: pointer;
-                background-color: aqua;
+                color: var(--color-claro-secundario);
+                background-color: whitesmoke;
             }
         }
 
@@ -244,4 +138,26 @@ main {
     width: 100%;
     gap: 3rem;
     margin-top: 2rem;
+}
+
+footer {
+    background-color:var(--color-claro-secundario);
+    color: var(--color-fuerte-primario);
+    padding: 20px 0;
+    text-align: center;
+
+    & p {
+        padding: 2px; 
+    }
+
+    & .iconos {
+        margin-top: 2px; 
+
+        & .icon-link {
+            color:whitesmoke;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+    }
 }
