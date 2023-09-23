@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter&display=swap');
 
-:root{
+:root {
     --color-fuerte-primario: #016A70;
     --color-claro-primario: #FFFFDD;
     --color-fuerte-secundario: #D2DE32;
@@ -15,13 +15,20 @@
 }
 
 /* Estilos para el encabezado */
-body header  {
-    background-color: var(--color-claro-secundario);
-    color: var(--color-fuerte-secundario);
-    & h1 {
-    text-align: center;
-    font-size: 3rem;
-    color: var(--color-fuerte-primario);}
+body {
+    background-color: whitesmoke;
+    
+    height: 100%;
+    & header {
+        background-color: var(--color-claro-secundario);
+        color: var(--color-fuerte-secundario);
+
+        & h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--color-fuerte-primario);
+        }
+    }
 }
 
 /* Estilos para la sección principal */
@@ -77,6 +84,11 @@ main {
         flex-wrap: wrap;
         gap: 10px;
         justify-content: center;
+        transition: all .5s ease;
+
+        & :hover {
+            transform: scale(1.1)
+        }
 
         & div {
             width: 200px;
@@ -85,7 +97,7 @@ main {
 
             & img {
                 margin: 4px;
-                border:  solid 2px var(--color-fuerte-primario);
+                border: solid 2px var(--color-fuerte-primario);
                 border-radius: 10px;
             }
 
@@ -141,20 +153,20 @@ main {
 }
 
 footer {
-    background-color:var(--color-claro-secundario);
+    background-color: var(--color-claro-secundario);
     color: var(--color-fuerte-primario);
     padding: 20px 0;
     text-align: center;
 
     & p {
-        padding: 2px; 
+        padding: 2px;
     }
 
     & .iconos {
-        margin-top: 2px; 
+        margin-top: 2px;
 
         & .icon-link {
-            color:whitesmoke;
+            color: whitesmoke;
             text-decoration: none;
             font-size: 24px;
             margin: 0 10px;

@@ -1,0 +1,73 @@
+[
+    {
+        "nombre": "Correa",
+        "precio": 731.57,
+        "id": 1,
+        "categoria": "perros",
+        "stock": 20,
+        "imagen": "/Image/correa.jpeg"
+    },
+    {
+        "nombre": "Collar",
+        "precio": 561.29,
+        "id": 2,
+        "categoria": "perros",
+        "stock": 20,
+        "imagen": "/Image/collar.jpg"
+    },
+    {
+        "nombre": "Pretal",
+        "precio": 714.84,
+        "id": 3,
+        "categoria": "perros",
+        "stock": 20,
+        "imagen": "/Image/pretal01.jpg"
+    },
+    {
+        "nombre": "Pretal Anti Escape",
+        "precio": 895.96,
+        "id": 4,
+        "categoria": "perros",
+        "imagen": "/Image/pretalAntiEscape.jpg"
+    },
+    {
+        "nombre": "Collar de Gato",
+        "precio": 382.70,
+        "id": 5,
+        "categoria": "gatos",
+        "stock": 20,
+        "imagen": "/Image/collarGato.jpg"
+    },
+    {
+        "nombre": "Mordedor",
+        "precio": 800.00,
+        "id": 6,
+        "categoria": "perros",
+        "stock": 20,
+        "imagen": "/Image/mordedores.jpg"
+    },
+    {
+        "nombre": "Bolitas con Plumas",
+        "precio": 350.00,
+        "id": 7,
+        "categoria": "gatos",
+        "stock": 20,
+        "imagen": "/Image/bolitasConPlumas.jpg"
+    },
+    {
+        "nombre": "Abrigo de Perros",
+        "precio": 1500.00,
+        "id": 8,
+        "categoria": "perros",
+        "stock": 20,
+        "imagen": "/Image/abrigosPerros.jpeg"
+    },
+    {
+        "nombre": "Medallita para Gatos",
+        "precio": 240.00,
+        "id": 9,
+        "categoria": "gatos",
+        "stock": 20,
+        "imagen": "/Image/medallitaGatos.jpeg"
+    }
+]

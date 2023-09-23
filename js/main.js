@@ -1,11 +1,13 @@
-let carrito = []
-let contenedor = document.getElementById("containerProductos")
-const mostrarFinalizarCompra = document.getElementById("menuFinalizarCompra")
-let h3total = document.getElementById("h3.total")
+fetch('./data.json')
+    .then(respuesta => respuesta.json())
+    .then(productos => principal(productos))
+    .catch(error => console.log(error))
 
-
-
-function principal() {
+function principal(productos) {
+    let carrito = []
+    let contenedor = document.getElementById("containerProductos")
+    const mostrarFinalizarCompra = document.getElementById("menuFinalizarCompra")
+    let h3total = document.getElementById("h3.total")
 
     const carritoGuardado = localStorage.getItem("carrito")
     if (carritoGuardado) {
@@ -13,87 +15,8 @@ function principal() {
     } else {
         carrito = []
     }
-
-    let cinta = 217.08
-    let medialuna = 93.92
-    let hebilla = 145.43
-    let regulador = 76.06
-    let mosqueton = 432
-    let argolla = 162
-
-    const productos = [
-        {
-            nombre: "Correa",
-            precio: (cinta * 1.38 + mosqueton).toFixed(2),
-            id: 1,
-            categoria: "perros",
-            stock: 20,
-            imagen:"/Image/correa.jpeg"
-        },
-        {
-            nombre: "Collar",
-            precio: (2 * medialuna + hebilla + regulador + cinta * 0.7).toFixed(2),
-            id: 2,
-            categoria: "perros",
-            stock: 20,
-            imagen:"/Image/collar.jpg"
-        },
-        {
-            nombre: "Pretal",
-            precio: (cinta * 1.84 + regulador + hebilla + medialuna).toFixed(2),
-            id: 3,
-            categoria: "perros",
-            stock: 20,
-            imagen:"/Image/pretal01.jpg"
-        },
-        {
-            nombre: "Pretal Anti Escape",
-            precio: (cinta * 1.66 + argolla + regulador * 3 + hebilla).toFixed(2),
-            id: 4,
-            categoria: "perros",
-            imagen:"/Image/pretalAntiEscape.jpg"
-        },
-        {
-            nombre: "Collar de Gato",
-            precio: (cinta * 0.31 + hebilla + regulador + medialuna).toFixed(2),
-            id: 5,
-            categoria: "gatos",
-            stock: 20,
-            imagen:"/Image/collarGato.jpg"
-        },
-        {
-            nombre: "Mordedor",
-            precio: (800).toFixed(2),
-            id: 6,
-            categoria: "perros",
-            stock: 20,
-            imagen:"/Image/mordedores.jpg"
-        },
-        {
-            nombre: "Bolitas con Plumas",
-            precio: (350).toFixed(2),
-            id: 7,
-            categoria: "gatos",
-            stock: 20,
-            imagen:"/Image/bolitasConPlumas.jpg"
-        },
-        {
-            nombre: "Abrigo de Perros",
-            precio: (1500).toFixed(2),
-            id: 8,
-            categoria: "perros",
-            stock: 20,
-            imagen:"/Image/abrigosPerros.jpeg"
-        },
-        {
-            nombre: "Medallita para Gatos",
-            precio: (240).toFixed(2),
-            id: 9,
-            categoria: "gatos",
-            stock: 20,
-            imagen:"/Image/medallitaGatos.jpeg"
-        }
-    ];
+    let total = carrito.reduce((accumulator, producto) => accumulator + producto.subtotal, 0);
+    h3total.innerText = total 
 
     function mostrarProductos(productos) {
         contenedor.innerHTML = ''
@@ -109,13 +32,14 @@ function principal() {
                     <button class="botonAgregarCarrito" id="${producto.id}">Agregar al Carrito</button>`
             contenedor.appendChild(tarjetaProducto)
 
-            const botonAgregarCarrito = tarjetaProducto.querySelector(".botonAgregarCarrito");
+            const botonAgregarCarrito = tarjetaProducto.querySelector(".botonAgregarCarrito")
             botonAgregarCarrito.addEventListener("click", comprar)
         })
         mostrarFinalizarCompra.className = "menuOcultoCompra"
     }
 
     function mostrarCarrito(productos) {
+        
         contenedor.innerHTML = ''
         contenedor.className = "productosCarrito"
         productos.forEach(producto => {
@@ -136,12 +60,13 @@ function principal() {
                     <h3>$${producto.cantidad * producto.precio}</h3>
                     </div>
                     `
-
             contenedor.appendChild(tarjetaProducto)
             if (productos) {
-
-            mostrarFinalizarCompra.className = "menuVisibleCompra"
-            }
+                mostrarFinalizarCompra.className = "menuVisibleCompra"
+            } 
+               
+            
+            h3total.innerText = +(total)
         })
     }
 
@@ -157,22 +82,61 @@ function principal() {
         const producto = productos.find(item => item.id === +(id))
         const productoEnCarrito = carrito.find(item => item.id === +(id))
         if (productoEnCarrito) {
-            producto.cantidad++
+            productoEnCarrito.cantidad++
+            productoEnCarrito.subtotal = productoEnCarrito.precio * productoEnCarrito.cantidad
         } else {
             producto.cantidad = 1
+            producto.subtotal = producto.precio
             carrito.push(producto)
         }
         producto.subtotal = 1
         producto.subtotal = +(producto.precio) * producto.cantidad
-        console.log(carrito)
-        let total = carrito.reduce((accumulator, carrito) => accumulator + carrito.subtotal, 0)
-        console.log(total)
+        total = carrito.reduce((accumulator, carrito) => accumulator + carrito.subtotal, 0)
         h3total.innerText = +(total)
-        localStorage.setItem("carrito", JSON.stringify(carrito));
+        localStorage.setItem("carrito", JSON.stringify(carrito))
+        mostrarNotificacion()
     }
 
-    mostrarProductos(productos)
+    function mostrarNotificacion() {
+        Toastify({
+            text: "Agregado al carrito",
+            duration: 3000,
+            newWindow: true,
+            close: false,
+            gravity: "bottom", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #016A70, #96c93d)",
+            },
+            onClick: function () { } // Callback after click
+        }).showToast()
+    }
 
+    function mostrarTotal (total) {
+        Swal.fire({
+            title: 'Deseas finalizar la compra?',
+            text: `El total de su compra es $${total}`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Muchas Gracias por su compra!'
+              )
+              localStorage.removeItem("carrito")
+              mostrarCarrito([])
+              mostrarFinalizarCompra.className = "menuOcultoCompra"
+              setTimeout(() => {location.reload();}, 2000)
+            }
+          })
+
+
+    }
+    mostrarProductos(productos)
     const productosTodos = document.getElementById("productosTodos")
     productosTodos.addEventListener("click", () => mostrarProductos(productos))
     const productosPerros = document.getElementById("productosPerros")
@@ -181,8 +145,7 @@ function principal() {
     productosGatos.addEventListener("click", () => mostrarCategoria("gatos"))
     const productosCarrito = document.getElementById("productosCarrito")
     productosCarrito.addEventListener("click", () => mostrarCarrito(carrito))
+    const finalizarCompra = document.getElementById("finalizarCompra")
+    finalizarCompra.addEventListener("click", () => mostrarTotal(total))
 }
 
-
-
-principal()
